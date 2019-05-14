@@ -12,7 +12,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
 
 const styles = theme => ({
   main: {
@@ -70,7 +69,7 @@ class SignIn extends Component {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign in
+                    Register
                 </Typography>
                 <form className={classes.form}>
                     <FormControl margin="normal" required fullWidth>
@@ -95,17 +94,6 @@ class SignIn extends Component {
                     >
                         Sign in
                     </Button>
-                    <Link to="/register">
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            color="primary"
-                            className={classes.submit}
-                        >
-                            Register
-                        </Button>
-                    </Link>
                 </form>
             </Paper>
             {this.state.username}
