@@ -65,7 +65,7 @@ function NavBar(props) {
                     </Button>
                     <Fab variant="extended" aria-label="Delete" className={classes.fab}>
                         <AddIcon className={classes.extendedIcon} />
-                            New Trip
+                            New Transaction
                     </Fab>
                 </Toolbar>
             </AppBar>
