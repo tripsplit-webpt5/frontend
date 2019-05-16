@@ -12,13 +12,13 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import red from '@material-ui/core/colors/red';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+import CloseIcon from '@material-ui/icons/Close';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Fab from '@material-ui/core/Fab';
 
 const styles = theme =>({
   root: {
@@ -68,20 +68,17 @@ render(){
           </Typography>
         </Toolbar>
       </AppBar>
-      <Card className={classes.card}>
+      <div style = {{display: 'flex', justifyContent: 'center', flexFlow: 'row wrap'}} >
+      <Card className={classes.card} style={{marginTop: 10, flexBasis: '100%'}}>
         <CardHeader
-          avatar={
-            <Avatar aria-label="Recipe" className={classes.avatar}>
-              R
-            </Avatar>
-          }
           action={
             <IconButton>
               <MoreVertIcon />
             </IconButton>
           }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
+          title="Italy '18"
+          subheader="Started 4 days ago
+          7 people"
         />
         <CardMedia
           className={classes.media}
@@ -89,28 +86,15 @@ render(){
           title="Paella dish"
         />
         <CardContent>
-          <Typography component="p">
-            This impressive paella is a perfect party dish and a fun meal to cook together with your
-            guests. Add 1 cup of frozen peas along with the mussels, if you like.
-          </Typography>
+            <Typography component="p">
+                $1,038 spent
+            </Typography>
         </CardContent>
         <CardActions className={classes.actions} disableActionSpacing>
-          <IconButton aria-label="Add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="Share">
-            <ShareIcon />
-          </IconButton>
-          <IconButton
-            className={classnames(classes.expand, {
-              [classes.expandOpen]: this.state.expanded,
-            })}
-            onClick={this.handleExpandClick}
-            aria-expanded={this.state.expanded}
-            aria-label="Show more"
-          >
-            <ExpandMoreIcon />
-          </IconButton>
+            <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                <CloseIcon className={classes.extendedIcon} />
+                End Trip
+            </Fab>
         </CardActions>
         <Collapse in={this.state.expanded} timeout="auto" unmountOnExit>
           <CardContent>
@@ -140,6 +124,26 @@ render(){
           </CardContent>
         </Collapse>
       </Card>
+      <div style={{marginTop: 50, flexBasis: '100%'}}>
+          Past Trips
+      </div>
+      <Card className={classes.card}>
+        <CardHeader
+          action={
+            <IconButton>
+              <MoreVertIcon />
+            </IconButton>
+          }
+          title="Shrimp and Chorizo Paella"
+          subheader="September 14, 2016"
+        />
+        <CardMedia
+          className={classes.media}
+          image="/static/images/cards/paella.jpg"
+          title="Paella dish"
+        />
+      </Card>
+    </div>
     </div>
   );
 }}
