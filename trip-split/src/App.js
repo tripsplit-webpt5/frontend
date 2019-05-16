@@ -5,6 +5,7 @@ import SignIn from './components/SignIn';
 import Register from './components/Register';
 import Trips from './components/Trips/Trips'
 import UserSummary from './components/UserSummary/UserSummary';
+import TripSummary from './components/TripSummary/TripSummary';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/trips" component={Trips} />
         <Route path="/user-summary" component={UserSummary} />
+        <Route path="/trip-summary" component={TripSummary} />
       </div>
     </Router>
   );
