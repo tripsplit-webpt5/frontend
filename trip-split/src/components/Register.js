@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
+import axios from 'axios';
 
 const styles = theme => ({
   main: {
@@ -54,6 +55,19 @@ class Register extends Component {
         }
     }
 
+    register = event => {
+        event.preventDefault();
+
+        axios
+        .post('https://trip-split-backend.herokuapp.com/auth/register', this.state)
+        .then(response => {
+            localStorage.setItem('id', JSON.stringify(response.data.id))
+            localStorage.setItem('token',JSON.stringify(response.data.token))},
+            this.props.history.push('/user-summary'))
+        .catch(err => console.log(err))
+    }
+    
+
     handleInputChange = e => {
         this.setState({[e.target.name]: e.target.value});
     }
@@ -71,7 +85,7 @@ class Register extends Component {
                 <Typography component="h1" variant="h5">
                     Register
                 </Typography>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={this.register}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="username">Username</InputLabel>
                         <Input id="username" name="username" autoComplete="email" autoFocus onChange = {this.handleInputChange} value={this.state.username} />
@@ -90,7 +104,6 @@ class Register extends Component {
                         variant="contained"
                         color="primary"
                         className={classes.submit}
-                        onClick={(event) => this.handleClick(event)}
                     >
                         Register
                     </Button>
