@@ -60,7 +60,6 @@ class SignIn extends Component {
         axios
         .post('https://trip-split-backend.herokuapp.com/auth/login', this.state)
         .then(response => {
-            console.log(response)
         localStorage.setItem('id',response.data.id)
         localStorage.setItem('token',response.data.token)},
         this.props.history.push('/trips'))
@@ -87,7 +86,7 @@ class SignIn extends Component {
                 <form className={classes.form} onSubmit={this.signIn}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="username">Username</InputLabel>
-                        <Input id="username" name="username" autoComplete="email" autoFocus onChange = {this.handleInputChange} value={this.state.username} />
+                        <Input id="username" name="username" autoComplete="email" autoFocus onChange= {this.handleInputChange} value={this.state.username} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
