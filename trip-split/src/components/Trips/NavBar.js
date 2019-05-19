@@ -10,6 +10,7 @@ import People from '@material-ui/icons/People';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     root: {
@@ -63,10 +64,12 @@ function NavBar(props) {
                         Transactions
                         <MonetizationOn className={classes.rightIcon} />
                     </Button>
-                    <Fab variant="extended" aria-label="Delete" className={classes.fab}>
-                        <AddIcon className={classes.extendedIcon} />
-                            New Trip
-                    </Fab>
+                    <Link to='/new-trip'>
+                        <Fab variant="extended" aria-label="Delete" className={classes.fab}>
+                            <AddIcon className={classes.extendedIcon} />
+                                New Trip
+                        </Fab>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </div>
