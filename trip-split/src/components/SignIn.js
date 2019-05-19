@@ -60,9 +60,10 @@ class SignIn extends Component {
         axios
         .post('https://trip-split-backend.herokuapp.com/auth/login', this.state)
         .then(response => {
-        localStorage.setItem('id',JSON.stringify(response.data.id))
-        localStorage.setItem('token',JSON.stringify(response.data.token))},
-        this.props.history.push('/user-summary'))
+            console.log(response)
+        localStorage.setItem('id',response.data.id)
+        localStorage.setItem('token',response.data.token)},
+        this.props.history.push('/trips'))
         .catch(err => console.log(err))
     }
 

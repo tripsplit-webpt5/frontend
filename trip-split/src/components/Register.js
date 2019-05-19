@@ -63,7 +63,7 @@ class Register extends Component {
         .then(response => {
             localStorage.setItem('id', JSON.stringify(response.data.id))
             localStorage.setItem('token',JSON.stringify(response.data.token))},
-            this.props.history.push('/user-summary'))
+            this.props.history.push('/trips'))
         .catch(err => console.log(err))
     }
     

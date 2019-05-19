@@ -27,17 +27,17 @@ function PreviousTripCard(props) {
                 <CardMedia
                     className={classes.media}
                     image="https://www.bbcgoodfood.com/sites/default/files/editor_files/2019/01/santorini-main.jpg"
-                    title="Greece"
+                    title={props.title}
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Greece '17
+                        {props.title}
                     </Typography>
                     <Typography component="p">
-                        Started 30 days ago
+                        {props.dates}
                     </Typography>
                     <Typography component="p">
-                        4 people
+                        {props.number_travelers} people
                     </Typography>
                     <Typography component="p">
                         $2,000 spent
