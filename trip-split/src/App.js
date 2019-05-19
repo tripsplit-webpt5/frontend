@@ -7,6 +7,7 @@ import Trips from './components/Trips/Trips'
 import UserSummary from './components/UserSummary/UserSummary';
 import TripSummary from './components/TripSummary/TripSummary';
 import NewTrip from './components/Trips/NewTrip';
+import EditTrip from './components/Trips/EditTrip';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/user-summary" component={UserSummary} />
         <Route path="/trip-summary" component={TripSummary} />
         <Route path="/new-trip" component={NewTrip}/>
+        <Route path="/edit-trip" component={EditTrip}/>
       </div>
     </Router>
   );
