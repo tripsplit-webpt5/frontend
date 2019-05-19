@@ -41,6 +41,7 @@ class Trips extends Component {
         {this.state.trips.map(trip => {
           return(
             <PreviousTripCard
+            key={trip.id}
             id={trip.id}
             title={trip.title}
             user_id={trip.user_id}
