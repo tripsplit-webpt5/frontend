@@ -11,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 const styles = theme => ({
   main: {
@@ -53,6 +54,17 @@ class SignIn extends Component {
         }
     }
 
+    signIn = event => {
+        event.preventDefault();
+
+        axios
+        .post('https://trip-split-backend.herokuapp.com/auth/login', this.state)
+        .then(response => {
+        localStorage.setItem('id',JSON.stringify(response.data.id))
+        localStorage.setItem('token',JSON.stringify(response.data.token))})
+        .catch(err => console.log(err))
+    }
+
     handleInputChange = e => {
         this.setState({[e.target.name]: e.target.value});
     }
@@ -70,7 +82,7 @@ class SignIn extends Component {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <form className={classes.form}>
+                <form className={classes.form} onSubmit={this.signIn}>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="username">Username</InputLabel>
                         <Input id="username" name="username" autoComplete="email" autoFocus onChange = {this.handleInputChange} value={this.state.username} />
@@ -84,8 +96,6 @@ class SignIn extends Component {
                         fullWidth
                         variant="contained"
                         color="primary"
-                        className={classes.submit}
-                        onClick={(event) => this.handleClick(event)}
                     >
                         Sign in
                     </Button>
