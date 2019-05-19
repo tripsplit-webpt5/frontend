@@ -21,7 +21,7 @@ function App() {
         <Route path="/user-summary" component={UserSummary} />
         <Route path="/trip-summary" component={TripSummary} />
         <Route path="/new-trip" component={NewTrip}/>
-        <Route path="/edit-trip" component={EditTrip}/>
+        <Route path="/edit-trip/:id" component={EditTrip}/>
       </div>
     </Router>
   );

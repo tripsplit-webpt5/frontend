@@ -17,23 +17,24 @@ class EditTrip extends Component {
         this.state = {
         title: props.title,
         user_id: localStorage.getItem("id"),
+        trip_id: this.props.match.params.id,
         number_travelers: props.number_travelers,
         destination: props.destination,
         dates: props.dates,
         names: props.names
         }
-    }
+    };
 
     newTrip = event => {
         event.preventDefault();
 
-        axios
-        .put(`https://trip-split-backend.herokuapp.com/user/trips/${props.id}`, this.state, headers)
-        .then(response => {
-            console.log(response)
-        },
-        this.props.history.push('/trips'))
-        .catch(err => console.log(err))
+        // axios
+        // .put(`https://trip-split-backend.herokuapp.com/user/trips/${props.id}`, this.state, headers)
+        // .then(response => {
+        //     console.log(response)
+        // },
+        // this.props.history.push('/trips'))
+        // .catch(err => console.log(err))
     }
 
     handleInputChange = e => {

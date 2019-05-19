@@ -9,6 +9,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
+import { Link } from 'react-router-dom'
 
 const styles = {
     card: {
@@ -45,10 +46,12 @@ function PreviousTripCard(props) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
+                <Link to={{pathname:`/edit-trip/${props.id}`}}>
                 <Button variant="contained" color="default" className={classes.button}>
                     <RemoveRedEye className={classes.rightIcon} />
                     View Trip
                 </Button>
+                </Link>
             </CardActions>
         </Card>
   );
