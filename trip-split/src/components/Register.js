@@ -45,17 +45,17 @@ const styles = theme => ({
   },
 });
 
-class SignIn extends Component {
+class Register extends Component {
     constructor(props) {
         super (props);
         this.state = {
-            username: 'Bob',
-            password: 'pass123',
+            username: '',
+            password: '',
         }
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    handleInputChange = e => {
+        this.setState({[e.target.name]: e.target.value});
     }
 
     render(){
@@ -73,12 +73,12 @@ class SignIn extends Component {
                 </Typography>
                 <form className={classes.form}>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="email">Username</InputLabel>
-                        <Input id="email" name="email" autoComplete="email" autoFocus onChange = {(event,newValue) => this.setState({username:newValue})} />
+                        <InputLabel htmlFor="username">Username</InputLabel>
+                        <Input id="username" name="username" autoComplete="email" autoFocus onChange = {this.handleInputChange} value={this.state.username} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input name="password" type="password" id="password" autoComplete="current-password" onChange = {(event,newValue) => this.setState({password:newValue})}/>
+                        <Input name="password" type="password" id="password" autoComplete="current-password" onChange = {this.handleInputChange} value={this.state.password}/>
                     </FormControl>
                     <FormControlLabel
                         control={<Checkbox value="remember" color="primary" />}
@@ -92,18 +92,16 @@ class SignIn extends Component {
                         className={classes.submit}
                         onClick={(event) => this.handleClick(event)}
                     >
-                        Sign in
+                        Register
                     </Button>
                 </form>
             </Paper>
-            {this.state.username}
-            {this.state.password}
         </main>
     );
 }}
 
-SignIn.propTypes = {
+Register.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles)(Register);

@@ -4,15 +4,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const styles = theme => ({
   main: {
@@ -50,13 +48,13 @@ class SignIn extends Component {
     constructor(props) {
         super (props);
         this.state = {
-            username: 'Bob',
-            password: 'pass123',
+            username: '',
+            password: '',
         }
     }
 
-    handleChange(event) {
-        this.setState({value: event.target.value});
+    handleInputChange = e => {
+        this.setState({[e.target.name]: e.target.value});
     }
 
     render(){
@@ -74,17 +72,13 @@ class SignIn extends Component {
                 </Typography>
                 <form className={classes.form}>
                     <FormControl margin="normal" required fullWidth>
-                        <InputLabel htmlFor="email">Username</InputLabel>
-                        <Input id="email" name="email" autoComplete="email" autoFocus onChange = {(event,newValue) => this.setState({username:newValue})} />
+                        <InputLabel htmlFor="username">Username</InputLabel>
+                        <Input id="username" name="username" autoComplete="email" autoFocus onChange = {this.handleInputChange} value={this.state.username} />
                     </FormControl>
                     <FormControl margin="normal" required fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input name="password" type="password" id="password" autoComplete="current-password" onChange = {(event,newValue) => this.setState({password:newValue})}/>
+                        <Input name="password" type="password" id="password" autoComplete="current-password" onChange = {this.handleInputChange} value={this.state.password}/>
                     </FormControl>
-                    <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
-                        label="Remember me"
-                    />
                     <Button
                         type="submit"
                         fullWidth
@@ -103,13 +97,11 @@ class SignIn extends Component {
                             color="primary"
                             className={classes.submit}
                         >
-                            Register
+                            Register New User
                         </Button>
                     </Link>
                 </form>
             </Paper>
-            {this.state.username}
-            {this.state.password}
         </main>
     );
 }}
