@@ -17,7 +17,8 @@ class NewExpense extends Component {
         this.state = {
             title: '',
             trip_id: '',
-            number_paid: '',            price: '',
+            number_paid: '',
+            price: '',
             names: ''
         }
     }
@@ -25,12 +26,12 @@ class NewExpense extends Component {
     componentDidMount() {
         this.setState({trip_id: this.props.match.params.id})
     }
-    newTrip = event => {
+    newExpense = event => {
 
         event.preventDefault();
 
         axios
-        .post('https://trip-split-backend.herokuapp.com/user/trips', this.state, headers)
+        .post('https://trip-split-backend.herokuapp.com/trips/expense', this.state, headers)
         .then(response => {
             console.log(response)
         },
@@ -48,14 +49,14 @@ class NewExpense extends Component {
       <Typography variant="h6" gutterBottom>
         New Expense
       </Typography>
-      <form onSubmit={this.newTrip}>
+      <form onSubmit={this.newExpense}>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <TextField
             required
             id="title"
             name="title"
-            label="Title"
+            label="Name of Expense"
             fullWidth
             onChange={this.handleInputChange} value={this.state.title}
           />
@@ -63,42 +64,32 @@ class NewExpense extends Component {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="destination"
-            name="destination"
-            label="Destination"
+            id="number_paid"
+            name="number_paid"
+            label="Number of People"
             fullWidth
-            onChange={this.handleInputChange} value={this.state.destination}
+            onChange={this.handleInputChange} value={this.state.number_paid}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="dates"
-            name="dates"
-            label="Dates"
+            id="price"
+            name="price"
+            label="Price"
             fullWidth
-            onChange={this.handleInputChange} value={this.state.dates}
+            onChange={this.handleInputChange} value={this.state.price}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
             <TextField
             required
-            id="number_travelers"
-            name="number_travelers"
-            label="Number of Travelers"
-            fullWidth
-            onChange={this.handleInputChange} value={this.state.number_travelers}
-            />
-        </Grid>
-        <Grid item xs={12}>
-          <TextField
-            required
             id="names"
             name="names"
-            label="Names of Travelers"
+            label="Names of People Who Paid"
             fullWidth
             onChange={this.handleInputChange} value={this.state.names}
-          />
+            />
         </Grid>
         <Button
             type="submit"
@@ -106,7 +97,7 @@ class NewExpense extends Component {
             variant="contained"
             color="primary"
         >
-            Add Trip
+            Add Expense
         </Button>
       </Grid>
       </form>

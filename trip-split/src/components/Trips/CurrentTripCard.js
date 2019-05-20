@@ -9,7 +9,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Edit from '@material-ui/icons/Edit';
-import Close from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add'
 import { Link } from 'react-router-dom'
 
