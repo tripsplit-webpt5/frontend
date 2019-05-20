@@ -10,7 +10,7 @@ const headers = {
   headers: {
     Authorization: localStorage.getItem("token"),
   }}
-console.log(headers)
+
 class Trips extends Component {
 
   constructor(props) {
@@ -22,6 +22,7 @@ class Trips extends Component {
   }
 
   componentDidMount(){
+
     axios
     .get(`https://trip-split-backend.herokuapp.com/user/trips/all/${this.state.id}`, headers)
     .then(response =>{
@@ -33,12 +34,28 @@ class Trips extends Component {
   }
 
   render() {
+    // const current_trip = this.state.trips[this.state.trips.length - 1];
+    const previous_trips = this.state.trips.splice(0,this.state.trips.length - 1)
+    
+    console.log(this.state.trips)
+
     return (
       <div className="Trips">
         <NavBar />
-        <CurrentTripCard />
-        <PreviousTripsBar />
         {this.state.trips.map(trip => {
+          return(<CurrentTripCard 
+            key={trip.id}
+            id={trip.id}
+            title={trip.title}
+            user_id={trip.user_id}
+            number_travelers={trip.number_travelers}
+            destination={trip.destination}
+            dates={trip.dates}
+            names={trip.names}
+          />)
+        })}
+        <PreviousTripsBar />
+        {previous_trips.map(trip => {
           return(
             <PreviousTripCard
               key={trip.id}

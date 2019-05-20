@@ -8,20 +8,21 @@ import UserSummary from './components/UserSummary/UserSummary';
 import TripSummary from './components/TripSummary/TripSummary';
 import NewTrip from './components/Trips/NewTrip';
 import EditTrip from './components/Trips/EditTrip';
+import NewExpense from './components/Trips/NewExpense';
 
 function App() {
   return (
     <Router>
       <div>
-        {/* <Header /> */}
 
         <Route exact path="/" component={SignIn} />
         <Route path="/register" component={Register} />
         <Route path="/trips" component={Trips} />
         <Route path="/user-summary" component={UserSummary} />
-        <Route path="/trip-summary" component={TripSummary} />
+        <Route path="/trip-summary/:id" component={TripSummary} />
         <Route path="/new-trip" component={NewTrip}/>
         <Route path="/edit-trip/:id" component={EditTrip}/>
+        <Route path="/new-expense/:id" component={NewExpense}/>
       </div>
     </Router>
   );

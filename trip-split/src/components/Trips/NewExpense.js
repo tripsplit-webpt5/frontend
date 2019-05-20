@@ -11,38 +11,26 @@ const headers = {
     }
 }
 
-class EditTrip extends Component {
+class NewExpense extends Component {
     constructor(props) {
         super (props);
         this.state = {
-          title: props.title,
-          number_travelers: props.number_travelers,
-          destination: props.destination,
-          dates: props.dates,
-          names: props.names
+            title: '',
+            trip_id: '',
+            number_paid: '',            price: '',
+            names: ''
         }
-    };
-    componentDidMount () {
-      axios
-        .get(`https://trip-split-backend.herokuapp.com/user/trips/${this.props.match.params.id}`, headers)
-        .then(response => {
-          this.setState({
-            title: response.data.title,
-            number_travelers: response.data.number_travelers,
-            destination: response.data.destination,
-            dates: response.data.dates,
-            names: response.data.names
-          })
-        })
-        .catch(err => console.log(err))
     }
 
-    editTrip = event => {
+    componentDidMount() {
+        this.setState({trip_id: this.props.match.params.id})
+    }
+    newTrip = event => {
+
         event.preventDefault();
-        console.log(this.state)
 
         axios
-        .put(`https://trip-split-backend.herokuapp.com/user/trips/${this.props.match.params.id}`, this.state, headers)
+        .post('https://trip-split-backend.herokuapp.com/user/trips', this.state, headers)
         .then(response => {
             console.log(response)
         },
@@ -58,9 +46,9 @@ class EditTrip extends Component {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
-        Edit Trip
+        New Expense
       </Typography>
-      <form onSubmit={this.editTrip}>
+      <form onSubmit={this.newTrip}>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <TextField
@@ -126,4 +114,4 @@ class EditTrip extends Component {
   )}
 }
 
-export default EditTrip;
+export default NewExpense;
