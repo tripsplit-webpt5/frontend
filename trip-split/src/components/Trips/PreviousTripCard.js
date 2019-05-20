@@ -8,8 +8,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import RemoveRedEye from '@material-ui/icons/RemoveRedEye';
-import { Link } from 'react-router-dom'
+import Edit from '@material-ui/icons/Edit';
+import Close from '@material-ui/icons/Close';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const styles = {
     card: {
@@ -20,8 +22,23 @@ const styles = {
     },
 };
 
+const headers = {
+    headers: {
+      Authorization: localStorage.getItem("token"),
+    }
+}
+
 function PreviousTripCard(props) {
     const { classes } = props;
+
+    function deleteTrip() {
+        console.log(props.id)
+        axios
+        .delete(`https://trip-split-backend.herokuapp.com/user/trips/${props.id}`, headers)
+        .then(response => console.log(response))
+        .catch(err => console.log(err));
+    };
+
     return (
         <Card className={classes.card}>
             <CardActionArea>
@@ -48,10 +65,14 @@ function PreviousTripCard(props) {
             <CardActions>
                 <Link to={{pathname:`/edit-trip/${props.id}`}}>
                 <Button variant="contained" color="default" className={classes.button}>
-                    <RemoveRedEye className={classes.rightIcon} />
-                    View Trip
+                    <Edit className={classes.rightIcon} />
+                    Edit Trip
                 </Button>
                 </Link>
+                <Button variant="contained" color="default" className={classes.button} onClick={deleteTrip}>
+                    <Close className={classes.rightIcon} />
+                    End Trip
+                </Button>
             </CardActions>
         </Card>
   );

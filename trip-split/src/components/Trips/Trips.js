@@ -41,14 +41,14 @@ class Trips extends Component {
         {this.state.trips.map(trip => {
           return(
             <PreviousTripCard
-            key={trip.id}
-            id={trip.id}
-            title={trip.title}
-            user_id={trip.user_id}
-            number_travelers={trip.number_travelers}
-            destination={trip.destination}
-            dates={trip.dates}
-            names={trip.names}
+              key={trip.id}
+              id={trip.id}
+              title={trip.title}
+              user_id={trip.user_id}
+              number_travelers={trip.number_travelers}
+              destination={trip.destination}
+              dates={trip.dates}
+              names={trip.names}
             />
           )
         })}
