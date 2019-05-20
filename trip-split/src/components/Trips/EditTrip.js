@@ -67,7 +67,6 @@ class EditTrip extends Component {
             required
             id="title"
             name="title"
-            label="Title"
             fullWidth
             onChange={this.handleInputChange} value={this.state.title}
           />
@@ -77,7 +76,6 @@ class EditTrip extends Component {
             required
             id="destination"
             name="destination"
-            label="Destination"
             fullWidth
             onChange={this.handleInputChange} value={this.state.destination}
           />
@@ -87,7 +85,6 @@ class EditTrip extends Component {
             required
             id="dates"
             name="dates"
-            label="Dates"
             fullWidth
             onChange={this.handleInputChange} value={this.state.dates}
           />
@@ -97,7 +94,6 @@ class EditTrip extends Component {
             required
             id="number_travelers"
             name="number_travelers"
-            label="Number of Travelers"
             fullWidth
             onChange={this.handleInputChange} value={this.state.number_travelers}
             />
@@ -107,7 +103,6 @@ class EditTrip extends Component {
             required
             id="names"
             name="names"
-            label="Names of Travelers"
             fullWidth
             onChange={this.handleInputChange} value={this.state.names}
           />

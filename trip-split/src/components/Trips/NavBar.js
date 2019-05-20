@@ -52,10 +52,12 @@ function NavBar(props) {
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         Trips
                     </Typography>
+                    <Link to="/trips">
                     <Button variant="contained" color="default" className={classes.button}>
                         Trips
                         <DirectionsCar className={classes.rightIcon} />
                     </Button>
+                    </Link>
                     <Button variant="contained" color="default" className={classes.button}>
                         People
                         <People className={classes.rightIcon} />

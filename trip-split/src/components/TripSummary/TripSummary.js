@@ -39,12 +39,19 @@ class TripSummary extends Component{
         .catch(err => console.log(err))
     }
 
+    totalExpenses() {
+        var total = 5;
+        this.state.expenses.forEach(expense => {total += expense.price});
+        return(total)
+    }
+
     render() {
         return(
             <div>
                 <NavBar 
                     title={this.state.trip_title}/>
-                <TripSummaryBar />
+                <TripSummaryBar 
+                price_total={this.totalExpenses}/>
                 <TransactionDayList 
                     expenses={this.state.expenses}
                 />

@@ -25,6 +25,7 @@ function CurrentTripCard(props) {
     const { classes } = props;
     return (
         <Card className={classes.card}>
+            <Link to={{pathname:`/trip-summary/${props.id}`}}>
             <CardActionArea>
                 <CardMedia
                     className={classes.media}
@@ -46,6 +47,7 @@ function CurrentTripCard(props) {
                     </Typography>
                 </CardContent>
             </CardActionArea>
+            </Link>
             <CardActions>
                 <Link to={{pathname:`/new-expense/${props.id}`}}>
                     <Button variant="contained" color="default" className={classes.button}>

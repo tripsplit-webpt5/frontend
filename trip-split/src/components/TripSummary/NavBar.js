@@ -10,6 +10,7 @@ import People from '@material-ui/icons/People';
 import MonetizationOn from '@material-ui/icons/MonetizationOn';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add'
+import { Link } from 'react-router-dom'
 
 const styles = theme => ({
     root: {
@@ -54,10 +55,12 @@ function NavBar(props) {
                     <Typography variant="h6" color="inherit" className={classes.grow}>
                         {props.title}
                     </Typography>
+                    <Link to="/trips">
                     <Button variant="contained" color="default" className={classes.button}>
                         Trips
                         <DirectionsCar className={classes.rightIcon} />
                     </Button>
+                    </Link>
                     <Button variant="contained" color="default" className={classes.button}>
                         People
                         <People className={classes.rightIcon} />

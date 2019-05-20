@@ -17,7 +17,8 @@ function TripSummaryBar(props) {
   const { classes } = props;
   return (
     <div>
-        $1,088 spent
+        $1,000 spent
+        {/* {props.price_total} */}
       <Button variant="contained" color="secondary" className={classes.button}>
       <Close className={classes.rightIcon} />
          End Trip

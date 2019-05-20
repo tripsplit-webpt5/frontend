@@ -71,7 +71,7 @@ function PreviousTripCard(props) {
                 </Link>
                 <Button variant="contained" color="default" className={classes.button} onClick={deleteTrip}>
                     <Close className={classes.rightIcon} />
-                    End Trip
+                    Delete Trip
                 </Button>
             </CardActions>
         </Card>
