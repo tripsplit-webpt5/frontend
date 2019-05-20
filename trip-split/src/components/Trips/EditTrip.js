@@ -16,25 +16,38 @@ class EditTrip extends Component {
         super (props);
         this.state = {
         title: props.title,
-        user_id: localStorage.getItem("id"),
-        trip_id: this.props.match.params.id,
         number_travelers: props.number_travelers,
         destination: props.destination,
         dates: props.dates,
         names: props.names
         }
     };
+    componentDidMount () {
+      axios
+        .get(`https://trip-split-backend.herokuapp.com/user/trips/${this.props.match.params.id}`, headers)
+        .then(response => {
+          this.setState({
+            title: response.data.title,
+            number_travelers: response.data.number_travelers,
+            destination: response.data.destination,
+            dates: response.data.dates,
+            names: response.data.names
+          })
+        })
+        .catch(err => console.log(err))
+    }
 
-    newTrip = event => {
+    editTrip = event => {
         event.preventDefault();
+        console.log(this.state)
 
-        // axios
-        // .put(`https://trip-split-backend.herokuapp.com/user/trips/${props.id}`, this.state, headers)
-        // .then(response => {
-        //     console.log(response)
-        // },
-        // this.props.history.push('/trips'))
-        // .catch(err => console.log(err))
+        axios
+        .put(`https://trip-split-backend.herokuapp.com/user/trips/${this.props.match.params.id}`, this.state, headers)
+        .then(response => {
+            console.log(response)
+        },
+        this.props.history.push('/trips'))
+        .catch(err => console.log(err))
     }
 
     handleInputChange = e => {
@@ -47,7 +60,7 @@ class EditTrip extends Component {
       <Typography variant="h6" gutterBottom>
         Edit Trip
       </Typography>
-      <form >
+      <form onSubmit={this.editTrip}>
       <Grid container spacing={24}>
         <Grid item xs={12} sm={6}>
           <TextField
