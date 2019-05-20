@@ -14,7 +14,8 @@ class TripSummary extends Component{
     constructor(props){
         super(props)
         this.state={
-            trip_title: ''
+            trip_title: '',
+            expenses: []
         }
     }
 
@@ -26,15 +27,27 @@ class TripSummary extends Component{
                 trip_title: response.data.title
             })
         })
+        .catch(err => console.log(err))
+
+        axios
+        .get(`https://trip-split-backend.herokuapp.com/trips/expense/all/${this.props.match.params.id}`, headers)
+        .then(response => {
+            this.setState({
+                expenses: response.data
+            })
+        })
+        .catch(err => console.log(err))
     }
 
     render() {
         return(
             <div>
                 <NavBar 
-                title={this.state.trip_title}/>
+                    title={this.state.trip_title}/>
                 <TripSummaryBar />
-                <TransactionDayList />
+                <TransactionDayList 
+                    expenses={this.state.expenses}
+                />
             </div>
         )
     }

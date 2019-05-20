@@ -21,11 +21,23 @@ function TransactionDayList(props) {
   const { classes } = props;
   return (
       <div>
-      <div>
-          Today
-      </div>
     <List className={classes.root}>
-      <ListItem alignItems="flex-start">
+      {props.expenses.map(expense => {
+        return(
+          <ListItem alignItems="flex-start">
+          <ListItemText
+          primary={expense.title}
+          secondary={
+            <React.Fragment>
+              {expense.names}
+            </React.Fragment>
+          }
+        />
+        <ListItemSecondaryAction>
+          {expense.price}
+        </ListItemSecondaryAction>
+      </ListItem>)})}
+      {/* <ListItem alignItems="flex-start">
         <ListItemText
           primary="Uber to Lunch"
           secondary={
@@ -50,20 +62,7 @@ function TransactionDayList(props) {
         <ListItemSecondaryAction>
           $7.25
         </ListItemSecondaryAction>
-      </ListItem>
-      <ListItem alignItems="flex-start">
-        <ListItemText
-          primary="Uber to Lunch"
-          secondary={
-            <React.Fragment>
-              {"Split with Kevin, Mario, and Maryann"}
-            </React.Fragment>
-          }
-        />
-        <ListItemSecondaryAction>
-          $7.25
-        </ListItemSecondaryAction>
-      </ListItem>
+      </ListItem> */}
     </List>
     </div>
   );
