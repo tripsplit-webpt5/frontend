@@ -9,7 +9,8 @@ import axios from 'axios';
 const headers = {
   headers: {
     Authorization: localStorage.getItem("token"),
-  }}
+  }
+}
 
 class Trips extends Component {
 
@@ -25,7 +26,7 @@ class Trips extends Component {
 
     axios
     .get(`https://trip-split-backend.herokuapp.com/user/trips/all/${this.state.id}`, headers)
-    .then(response =>{
+    .then(response => {
       this.setState({
         trips: response.data
       })

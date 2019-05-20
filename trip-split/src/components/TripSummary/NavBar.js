@@ -52,7 +52,7 @@ function NavBar(props) {
                         Trip Summary
                     </Typography>
                     <Typography variant="h6" color="inherit" className={classes.grow}>
-                        Italy '18
+                        {props.title}
                     </Typography>
                     <Button variant="contained" color="default" className={classes.button}>
                         Trips
